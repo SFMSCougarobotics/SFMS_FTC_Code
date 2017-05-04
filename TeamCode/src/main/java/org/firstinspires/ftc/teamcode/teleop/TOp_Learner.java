@@ -20,7 +20,8 @@ public class TOp_Learner extends LinearOpMode {
         double left;
         double right;
         double max;
-
+        double crane;
+        
         /* Initialize the hardware variables.
          * The init() method of the hardware class does all the work here
          */
@@ -40,7 +41,21 @@ public class TOp_Learner extends LinearOpMode {
                 //Just in case to prevent getting stuck
                 left = (gamepad1.left_stick_y - gamepad1.right_stick_x);
                 right = (gamepad1.left_stick_y + gamepad1.right_stick_x);
-
+                
+              // bring claw up
+                if(gamepad1.y) 
+                {
+                crane = .5;
+                }
+            // bring claw down
+            if(gamepad1.a)
+            {
+            crane = -.5;
+            }
+            else
+            {
+                crane = 0;
+            }   
             // Normalize the values so neither exceed +/- 1.0
             max = Math.max(Math.abs(left), Math.abs(right));
             if (max > 1.0)
@@ -48,7 +63,7 @@ public class TOp_Learner extends LinearOpMode {
                 left /= max;
                 right /= max;
             }
-
+            robot.up
             robot.leftMotor.setPower(left);
             robot.rightMotor.setPower(right);
 
