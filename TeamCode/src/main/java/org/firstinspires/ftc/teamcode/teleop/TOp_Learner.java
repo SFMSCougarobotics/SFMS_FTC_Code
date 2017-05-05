@@ -17,10 +17,14 @@ public class TOp_Learner extends LinearOpMode {
     @Override
     //runOpMode is a general statement starting the execution of the above stated 'LinearOpMode'
     public void runOpMode() {
+    //Motor variables
         double left;
         double right;
         double max;
         double crane;
+        
+    //Servo variables
+        double servo_pivot;
         
         /* Initialize the hardware variables.
          * The init() method of the hardware class does all the work here
@@ -30,7 +34,7 @@ public class TOp_Learner extends LinearOpMode {
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Say", "This is your first program!");    //
         telemetry.update();
-
+       
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
@@ -56,6 +60,16 @@ public class TOp_Learner extends LinearOpMode {
             {
                 crane = 0;
             }   
+            
+            //Servo Pivot right
+                if(gamepad1.b) {
+                    servo_pivot = .5
+                }
+            
+            //Servo Pivot left
+                if(gampad1.x) {
+                    servo_pivot = -.5
+                }
             // Normalize the values so neither exceed +/- 1.0
             max = Math.max(Math.abs(left), Math.abs(right));
             if (max > 1.0)
