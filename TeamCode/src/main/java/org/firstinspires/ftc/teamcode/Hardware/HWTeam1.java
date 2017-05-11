@@ -27,6 +27,8 @@ public class HW_Basic
     public DcMotor  leftMotor   = null;
     public DcMotor  rightMotor  = null;
     public DcMotor  craneMotor  = null;
+    
+    public Servo bucket = null;
 
     /* local OpMode members. */
     HardwareMap hwMap           =  null;
@@ -45,19 +47,23 @@ public class HW_Basic
         // Define and Initialize Motors
         leftMotor   = hwMap.dcMotor.get("m_1");
         rightMotor  = hwMap.dcMotor.get("m_2");
+        craneMotor  = hwMap.dcMotor.get("m_3");
 
         leftMotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
         rightMotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
+        craneMotor.setDirection(DcMotor.Direction.FORWARD);
 
         // Set all motors to zero power
         leftMotor.setPower(0);
         rightMotor.setPower(0);
+        craneMotor.setPower(0);
 
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
         leftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        craneMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
     }
 
