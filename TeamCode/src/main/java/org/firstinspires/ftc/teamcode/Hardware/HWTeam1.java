@@ -48,6 +48,8 @@ public class HW_Basic
         leftMotor   = hwMap.dcMotor.get("m_1");
         rightMotor  = hwMap.dcMotor.get("m_2");
         craneMotor  = hwMap.dcMotor.get("m_3");
+        
+        bucket = hwMap.servo.get("s_1");
 
         leftMotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
         rightMotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
@@ -57,6 +59,8 @@ public class HW_Basic
         leftMotor.setPower(0);
         rightMotor.setPower(0);
         craneMotor.setPower(0);
+        
+        bucket.setPosition(0);
 
 
         // Set all motors to run without encoders.
